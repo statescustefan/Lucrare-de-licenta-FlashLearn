@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Phobia Smart Assistant</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/mystyles/animate.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/mystyles/style.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/mystyles/index.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+</head>
+<body class="gray-bg">
+	<div th:if="${param.error}"
+		class="alert alert-warning alert-dismissible col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center"
+		role="alert">
+		<button type="button" class="close" data-dismiss="alert"
+			aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<strong>Warning!</strong> Wrong username or passowrd
+	</div>
+	<div class="middle-box text-center loginscreen  animated fadeInDown">
+		<div class="col-xs-12" style="height: 100px;"></div>
+
+		<h2>Flash Learn</h2>
+		<p>Stefan Statescu</p>
+		<div>
+			<form class="social" th:action="@{/signin/facebook}" method="POST"
+				style="display: inline;" id="connectFacebookForm">
+				<a data-toggle="tooltip" id="connectFacebook" data-placement="left"
+					title="Sign In With Facebook"><i
+					class="fa fa-facebook-square fa-3x"></i></a>
+			</form>
+			<form class="social" th:action="@{/connect/twitter}" method="post"
+				style="display: inline;" id="connectTwitterForm">
+				<a data-toggle="tooltip" id="connectTwitter" data-placement="left"
+					title="Sign In With Twitter"><i
+					class="fa fa-twitter-square fa-3x"></i></a>
+			</form>
+			<form class="social" th:action="@{/connect/linkedin}" method="post"
+				style="display: inline;" id="connectLinkedinForm">
+				<a href="/" data-toggle="tooltip" id="connectLinkedin"
+					data-placement="left" title="Sign In With Linkedin"><i
+					class="fa fa-linkedin-square fa-3x"></i></a>
+			</form>
+		</div>
+		<div class="loginBox">
+			<form class="m-t" method="post" th:action="@{/login}">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-user"></i></span> <input
+						type="text" class="form-control" name="username"
+						placeholder="Username" required="" />
+				</div>
+				<div class="input-group  m-t-md">
+					<span class="input-group-addon"><i class="fa fa-lock"></i></span> <input
+						type="password" class="form-control" name="password"
+						placeholder="Password" required="" />
+				</div>
+				<button name="submit" type="submit" value="submit"
+					class="btn btn-primary block full-width m-b  m-t-md">Login</button>
+				<br></br>
+			</form>
+			<p>Not a member?</p>
+			<a id="registerNow">Register Now!</a>
+		</div>
+		<div class="registerBox">
+			<form class="m-t" method="post" th:object="${userRegistered}"
+				th:action="@{/register}">
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="fa fa-hand-o-right"></i></span> <input type="text"
+						class="form-control" th:field="*{student.first_name}"
+						placeholder="Firstname" required="" />
+				</div>
+				<div class="input-group m-t">
+					<span class="input-group-addon"><i
+						class="fa fa-hand-o-right"></i></span> <input type="text"
+						class="form-control" th:field="*{student.last_name}"
+						placeholder="Lastname" required="" />
+				</div>
+				<div class="input-group m-t">
+					<span class="input-group-addon"><i
+						class="fa fa-hand-o-right"></i></span> <select
+						th:field="*{student.gender}" class="form-control" required="">
+
+						<option th:value="Male" th:text="Male" placeholder="Gender" />
+						<option th:value="Female" th:text="Female" />
+					</select>
+				</div>
+				<div class="input-group m-t">
+					<span class="input-group-addon"><i
+						class="fa fa-hand-o-right"></i></span> <input type="text"
+						class="form-control" th:field="*{student.birthday}"
+						placeholder="Birthday" required="" id = "datepicker"/>
+				</div>
+				<div class="input-group m-t">
+					<span class="input-group-addon"><i
+						class="fa fa-hand-o-right"></i></span> <input type="text"
+						class="form-control" th:field="*{username}" placeholder="Username"
+						required="" />
+				</div>
+				<div class="input-group m-t">
+					<span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+					<input type="text" class="form-control" th:field="*{email}"
+						placeholder="Email" required="" />
+				</div>
+				<div class="input-group m-t">
+					<span class="input-group-addon"><i class="fa fa-lock"></i></span> <input
+						type="password" class="form-control" th:field="*{password}"
+						placeholder="Password" required="" />
+				</div>
+				<button name="submit" type="submit" value="submit"
+					class="btn btn-primary block full-width m-b  m-t-md">Register</button>
+				<p class="text-muted text-center">
+					<small>Already have an account?</small>
+				</p>
+				<a class="btn btn-sm btn-white btn-block" href="login.html">Login</a>
+
+			</form>
+		</div>
+		<p class="m-t">
+			<small>Flash Learn &copy; 2017-2018</small>
+		</p>
+	</div>
+	<script th:src="@{/js/jquery-2.1.1.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<script>
+      $("#registerNow").click(function () {
+              $(".loginBox").toggle("slow");
+              $(".registerBox").toggle("slow");
+          });
+      $("#connectFacebook").click(function() {
+               $("#connectFacebookForm").submit();
+          });
+      $("#connectTwitter").click(function() {
+          $("#connectTwitterForm").submit();
+     });
+      $("#connectLinkedin").click(function() {
+          $("#connectLinkedinForm").submit();
+     });
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Phobia Smart Assistant</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/mystyles/animate.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/mystyles/style.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/sweetalert.css}" />
+<link th:href="@{/css/studentUploadFile.css}" rel="stylesheet"/>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+</head>
+<body>
+	<div id="wrapper">
+		<nav th:replace="fragments/leftSideMenu"></nav>
+		<div id="page-wrapper" class="gray-bg">
+			<div th:replace="fragments/topMenu"></div>
+			<div class="row wrapper border-bottom white-bg page-heading">
+				<div class="col-lg-10">
+					<h2>Uploads</h2>
+					<ol class="breadcrumb">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><strong>Uploads</strong></li>
+					</ol>
+				</div>
+				<div class="col-lg-2">
+				  <div class = "title-action">
+				     <button class="btn btn-block btn-primary" data-toggle="modal" 
+                  data-target="#newFile">Upload </button>
+              
+                  </div>
+				</div>
+			</div>
+			<div class="wrapper wrapper-content animated fadeInRight">
+				<div class="row">
+				  <div class = "col-lg-10">
+				    <div class = "ibox float-e-margins">
+				    <div class = "ibox-title">
+				       <h5>Recent Uploaded Files </h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#">Config option 1</a>
+                                    </li>
+                                    <li><a href="#">Config option 2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>	
+                      </div>
+                    <div class = "ibox-content">	    
+					<table class = "table table-bordered">
+					  <thead>
+					     <tr>
+					       <th>File Name </th>
+					       <th>Date</th>
+					       <th>Owner</th>
+					       <th>Actions</th>
+					     </tr>
+					  </thead>
+					  <tbody>
+					    <tr th:each = "document : ${documents}">
+					      <td>
+					        <i class="fa fa-file-pdf-o" aria-hidden="true" style="margin-right:10px;"></i>
+					      </td>
+					      <td th:text="${document.name}">
+					        
+					      </td>
+					      <td th:text = "${document.uploaddate}">
+					      </td>
+					      <td th:text = "${document.student.first_name + document.student.last_name}">
+					      </td>
+					     <td><a th:href="@{/student/uploadManager/download-document-${doc.id}}" data-toggle="tooltip" title="Download"><i class="fa fa-download fa-lg" aria-hidden="true"></i></a>
+            <a th:href="@{/student/uploadManager/open-document-${doc.id}}" data-toggle="tooltip" title="Open"><i class="fa fa-folder-open fa-lg" aria-hidden="true"></i></a>
+            <a th:href="@{/student/uploadManager/delete-document-${doc.id}}" data-toggle="tooltip" title="Delete"><i class="fa fa-times fa-lg" aria-hidden="true"></i></a>            
+             </td>
+					    </tr>
+					  </tbody>
+					</table>
+					   <div id="newFile" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+       <div class="modal-content">
+        <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">Upload to Flash Learn</h4>
+        </div>
+        <div class="modal-body">
+        <h5 style="text-align:center;margin-bottom:15px;">Choose a file to upload into Flash Learn. You can only upload one file at a time.</h5>
+      <form th:object = "${uploadFile}" method = "post" th:action = "@{./uploads}" role="form" class="form-horizontal" enctype="multipart/form-data">
+         
+         
+             <div class="input-group col-sm-9 col-sm-offset-1">
+               <label class="input-group-btn">
+                 <span class="btn btn-primary">
+                  Browse&hellip;
+                  <input type="file" class="form-control" th:field = "*{file}" style="display:none;"/>
+                 </span>
+               </label>
+               <input type="text" class="form-control" readonly = ""/>
+             </div>
+    
+    
+          <div class="form-group" style = "margin-top:10px;">
+                  <div class="control-label col-sm-3">Description</div>
+                  <div class="col-sm-7">
+                    <input th:field="*{description}" type="text" class="form-control"/>
+                  </div>
+          </div>
+          <div class="form-group">
+                   <div class="col-sm-offset-2 col-sm-10" style="text-align:right;">
+                     <button type="submit" class="btn btn-primary" name="coursecontent" style="margin-right:20px;">Upload</button>
+                  </div>
+         </div>      
+      </form>
+      </div>
+         </div>
+       </div>
+      </div>
+      </div>
+        </div>
+				</div>
+				</div>
+			</div>
+			<div class="footer">
+				<div>
+					<strong>Copyright</strong> Flash Learn&copy; 2016-2017
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/jquery-2.1.1.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/inspinia.js}"></script>
+	<script th:src="@{/js/plugins/pace/pace.min.js}"></script>
+	<script th:src="@{/js/plugins/toastr/toastr.min.js}"></script>
+	<script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+	<script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+	<script th:src="@{/js/plugins/sweetalert/sweetalert.min.js}"></script>
+	<script>
+    $(function() {
+
+    	  // We can attach the `fileselect` event to all file inputs on the page
+    	  $(document).on('change', ':file', function() {
+    	    var input = $(this),
+    	        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+    	        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    	    input.trigger('fileselect', [numFiles, label]);
+    	  });
+
+    	  // We can watch for our custom `fileselect` event like this
+    	  $(document).ready( function() {
+    	      $(':file').on('fileselect', function(event, numFiles, label) {
+
+    	          var input = $(this).parents('.input-group').find(':text'),
+    	              log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+    	          if( input.length ) {
+    	              input.val(log);
+    	          } else {
+    	              if( log ) alert(log);
+    	          }
+
+    	      });
+    	  });
+    	  
+    	});
+    </script>
+</body>
+</html>

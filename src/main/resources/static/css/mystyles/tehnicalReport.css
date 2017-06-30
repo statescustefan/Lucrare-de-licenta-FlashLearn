@@ -1,0 +1,17 @@
+h1,h2,h3 {
+    text-align: center;
+    padding: 10px;
+}
+
+.authors {
+    list-style: none;
+}
+
+.authors  li{
+    display: inline;
+    margin-left: 10px;
+}
+
+h4 {
+    padding: 10px;
+}

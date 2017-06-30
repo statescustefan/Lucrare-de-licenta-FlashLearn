@@ -1,0 +1,29 @@
+@CHARSET "ISO-8859-1";
+
+table tbody tr td a{
+	margin-right:10px;
+	cursor:pointer;
+	color:grey;
+}
+
+.tablecontainer{
+	margin-top:50px;
+	min-height:300px;
+}
+
+
+table thead {
+ font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;	
+font-size: 13px;
+color: #737373;
+background: none
+
+}
+
+table tbody {
+	 font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;	
+font-size: 14px;
+color: #737373;
+background: none
+}
+

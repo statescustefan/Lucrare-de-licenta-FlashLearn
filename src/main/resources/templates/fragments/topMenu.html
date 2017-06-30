@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Phobia Smart Assistant</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/mystyles/animate.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/mystyles/style.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+</head>
+<body>
+	<div class="row border-bottom"  th:fragment="header">
+		<nav class="navbar navbar-static-top" role="navigation"
+			style="margin-bottom: 0">
+			
+			<ul class="nav navbar-top-links navbar-right">
+				<li><a>Welcome <span  th:text="${loggeduser.username}"></span>  </a></li>
+				<li><a href="/logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
+			</ul>
+		</nav>
+	</div>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Phobia Smart Assistant</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/mystyles/animate.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/mystyles/style.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/plugins/toastr/toastr.min.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+</head>
+<body>
+	<div id="wrapper">
+		<nav th:replace="fragments/leftSideMenu"></nav>
+		<div id="page-wrapper" class="gray-bg">
+			<div th:replace="fragments/topMenu"></div>
+			<div class="row wrapper border-bottom white-bg page-heading">
+				<div class="col-lg-10">
+					<h2>Dashboard</h2>
+					<ol class="breadcrumb">
+						<li><a href="index.html">Home</a></li>
+						<li class="active"><strong>Dashboard</strong></li>
+					</ol>
+				</div>
+				<div class="col-lg-2"></div>
+			</div>
+			<div class="wrapper wrapper-content animated fadeInRight">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="ibox float-e-margins">
+							<div class="ibox-content text-center p-md">
+
+								<h2>
+									<span class="text-navy">Flash Learn </span>
+									lorem ipsum lorem ipsum<br />Welcome to FlashLearn
+								</h2>
+
+								<p>This is out welcome page.</p>
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h4>What is Moodle?</h4>
+								<div class="ibox-tools">
+									<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+									</a> <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+										<i class="fa fa-wrench"></i>
+									</a>
+									<ul class="dropdown-menu dropdown-user">
+										<li><a href="#">Generate</a></li>
+									</ul>
+									<a class="close-link"> <i class="fa fa-times"></i>
+									</a>
+								</div>
+							</div>
+							<div class="ibox-content">
+								<figure>
+									<iframe width="560" height="315" src="https://www.youtube.com/embed/wop3FMhoLGs" frameborder="0" allowfullscreen=""></iframe>
+								</figure>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h4> What is Moodle? - Official Video --</h4>
+								<div class="ibox-tools">
+									<a class="collapse-link"> <i class="fa fa-chevron-up"></i>
+									</a> <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+										<i class="fa fa-wrench"></i>
+									</a>
+									<ul class="dropdown-menu dropdown-user">
+										<li><a href="#">Config option 1</a></li>
+										<li><a href="#">Config option 2</a></li>
+									</ul>
+									<a class="close-link"> <i class="fa fa-times"></i>
+									</a>
+								</div>
+							</div>
+							<div class="ibox-content profile-content">
+								<h4>
+									<strong> What is Moodle?
+										 Scrie ceva aici sa umpli cu text</strong>
+								</h4>
+								<p>
+									<i class="fa fa-clock-o"></i> Uploaded on October 27, 2011
+								</p>
+								<h5>Facts about phobias</h5>
+								<p>
+									Hello Student!!
+								</p>
+								<div class="row m-t-md">
+									<div class="col-md-3">
+										<h5>
+											<strong>169</strong> Likes
+										</h5>
+									</div>
+									<div class="col-md-9">
+										<h5>
+											<strong>28</strong> Comments
+										</h5>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="footer">
+				<div>
+					<strong>Copyright</strong> FlashLearn &copy; 2016-2017
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/jquery-2.1.1.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/inspinia.js}"></script>
+	<script th:src="@{/js/plugins/pace/pace.min.js}"></script>
+	<script th:src="@{/js/plugins/toastr/toastr.min.js}"></script>
+	<script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+	<script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+	<script th:src="@{/js/plugins/video/responsible-video.js}"></script>
+	
+	<script>
+	//to do the toaster
+      $(document).ready(function() {
+          setTimeout(function() {
+              toastr.options = {
+                         closeButton : true,
+                         progressBar: true,
+                         showMethod: 'slideDown',
+                         timeOut: 4000
+                      };
+              toastr.success('Made By Stefan Statescu', 'Welcome to Flash Learn');
+              }, 1300);
+          });
+      $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange', function (e){
+          $('body').hasClass('fullscreen-video') ? $('body').removeClass('fullscreen-video') : $('body').addClass('fullscreen-video')
+      });
+        
+	</script>
+</body>
+</html>
